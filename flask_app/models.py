@@ -118,11 +118,7 @@ class Rating(db.Model):
         else:
             return 0
 
-     #   def __repr__(self):
-     #       """Provide helpful representation when printed."""
-
-         #   return "<Rating rating_id=%s post_id=%s user_id=%s score=%s>" % (self.rating_id, self.post_id, self.user_id, self.score)
-
+    
 # adated from Grinberg(2014, 2018)
 
 

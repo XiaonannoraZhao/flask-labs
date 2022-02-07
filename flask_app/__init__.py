@@ -6,17 +6,16 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
-#from flask_bcrypt import Bcrypt
+
 
 app = Flask(__name__)
 
 app.config["SECRET_KEY"]='413ce59d52111b1693a15cf2809c8c4e260780d59c788154'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
-#basedir=os.path.abspath(os.path.dirname(__file__))
 app.config[
     "SQLALCHEMY_DATABASE_URI"
 ] = 'mysql+pymysql://c1894986:Password2022@csmysql.cs.cf.ac.uk:3306/c1894986_my_db' 
-#bcrypt = Bcrypt(app)
+
 
 db=SQLAlchemy(app)
 bootstrap=Bootstrap(app)

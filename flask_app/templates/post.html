@@ -29,9 +29,7 @@
   {% for comment in comments %}
   <li class="list-comment-item">{{ comment.user.username }}:&nbsp;{{comment.comment}}
 
-    <!--<button type="button" class="close" onClick="deleteNote({ userid })">
-       <span aria-hidden="true">&times;</span>
-     </button>-->
+    
   </li>
   {% endfor%}
 
@@ -56,62 +54,7 @@
       status.blur();
     }
 
-    function submitRate(post_id,score){
-      c
-      // $.ajax({
-      //   url:'rating',
-      //   data:{'post_id':post_id,'score':score},
-      //   method:'GET',
-      //   success: function(data){
-      //     console.log(post_id,score)
-      //     // location.reload();
-      //   }
-      // })
-    }
   }
 </script>
 
 {% endblock my_content %}
-
-<!--lock scripts %}
-<!--<script>
-<!--$('.disabled-rating').rating({
-<!--    readonly: true,
-<!--    theme: 'krajee-fa',
-<!--    filledStar: '<i class="fa fa-star"></i>',
-<!--    emptyStar: '<i class="fa fa-star-o"></i>',
-<!--    showCaption: false, //不显示右边内容
-<!--    showClear: false //清除按钮
-<!--})
-<!--const rating = $('.kv-fa');
-<!--const id = $('.comment_id');
-<!--rating.rating({
-<!--    theme: 'krajee-fa',
-<!--    filledStar: '<i class="fa fa-star"></i>',
-<!--    emptyStar: '<i class="fa fa-star-o"></i>',
-<!--    showCaption: false, //不显示右边内容
-<!--    showClear: false //清除按钮
-<!--});
-<!--rating.on(
-<!--    'change', function () {
-<!--        console.log('Rating selected: ' + $(this).val());
-<!--        const ratingIndex = $(this)[0].id.split('_')[1];
-<!--        const url = 'http://' + window.location.host + '/post/comment/rating/' + $('#comment_id_' + ratingIndex).val();
-<!--        let data = {
-<!--            score: $(this).val()
-<!--        }
-<!--        $.post(url, data, function (data) {
-<!--            if (data.message === 'success') {
-<!--                window.location.reload()
-<!--            }
-<!--        });
-<!--    });
-<!--
-<!--</script>
-<!--ndblock %}
-<!--{% if post.author_id == current_user.id %}
-       <  <div>
-       <    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_post', post_id=post_id) }}">Update</a>
-       <    <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-       <  </div>
-       <{% endif %}
