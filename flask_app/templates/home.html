@@ -1,13 +1,14 @@
 {% extends 'layout.html'%}
 {% block my_content  %}
+<div class ="blog_post">
 {% for post in posts %}
   <p><a href="{{ url_for('post', post_id=post.id) }}">
     <img class="img_home" src="{{ url_for('static', filename='img/' + post.image_file) }}"></p>
-    <p>  "{{ post.title }}"</a></p>
+    <p class="post_title">  "{{ post.title }}"</a></p>
     <p>by {{ post.user.username }}</p>
-    <p>{{ post.content }}</p>
+    <p class="short_description">{{ post.content }}</p>
 {% endfor %}
-
+</div>
 
 {% endblock my_content  %}
 

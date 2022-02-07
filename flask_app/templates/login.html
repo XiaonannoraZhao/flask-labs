@@ -4,10 +4,11 @@
 <h1> YOU HAVE REGISTERED! </h1>
 <form action= "" method="POST">
     {{ form.csrf_token }}
-    <p>{{ form.email.label }} {{ form.email}}</p>
-    <p>{{ form.password.label }} {{ form.password}}</p>
+    <p id="username">{{ form.email.label }} {{ form.email}}</p>
+    <p id="password">{{ form.password.label }} {{ form.password}}</p>
+    
     <p>{{ form.submit.lable}} {{form.submit }}</p>
 </form>
 <img class="article-img" src="../static/img/laptop.jpg">
-
+<p class="login_error">login error</p>
 {% endblock my_content %}

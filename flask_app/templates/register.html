@@ -7,10 +7,10 @@
 
 <form action= "" method="POST">
     {{ form.csrf_token }}
-    <p>{{ form.first_name_new.label }} {{ form.first_name_new }}</p>
-    <p>{{ form.email_new.label }} {{ form.email_new}}</p>
-    <p>{{ form.password_new.label }} {{ form.password_new}}</p>
-    <p>{{ form.password_confirm.label }} {{ form.password_confirm}}</p>
+    <p id="first_name_new">{{ form.first_name_new.label }} {{ form.first_name_new }}</p>
+    <p id="email_new">{{ form.email_new.label }} {{ form.email_new}}</p>
+    <p id="password_new">{{ form.password_new.label }} {{ form.password_new}}</p>
+    <p id="password_confirm">{{ form.password_confirm.label }} {{ form.password_confirm}}</p>
     <p>{{ form.submit.lable}} {{form.submit }}</p>
 </form>
 
