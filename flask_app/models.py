@@ -109,11 +109,14 @@ class Rating(db.Model):
 
     @classmethod
     def getCurrentUserRate(cls, _id):
-        rateObj = cls.query.filter(and_(cls.post_id == _id, cls.user_id == current_user.id)).first()
-        if rateObj is None:
-            return 0
+        if len(vars(current_user)) != 0:
+            rateObj = cls.query.filter(and_(cls.post_id == _id, cls.user_id == current_user.id)).first()
+            if rateObj is None:
+                return 0
+            else:
+                return rateObj.score
         else:
-            return rateObj.score
+            return 0
 
      #   def __repr__(self):
      #       """Provide helpful representation when printed."""
