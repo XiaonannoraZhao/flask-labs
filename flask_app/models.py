@@ -1,7 +1,6 @@
 from datetime import datetime
 import email
 from operator import and_
-#from turtle import title
 from flask_app import db, login_manager
 from flask_login import UserMixin, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -31,7 +30,7 @@ class User(UserMixin, db.Model):
     hashed_password = db.Column(db.String(128))
     post = db.relationship('Post', backref='user', lazy=True)
     comment = db.relationship('Comment', backref='user', lazy=True)
-   # rating = db.relationship('Rating',backref='user',lazy=True)
+  
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
@@ -53,11 +52,6 @@ class User(UserMixin, db.Model):
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.Text, nullable=False)
-    # title=db.Column(db.String(255))
-   # timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    #disabled = db.Column(db.Boolean)
-    #score = db.Column(db.Float, default=0.0)
-    #star = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
 
