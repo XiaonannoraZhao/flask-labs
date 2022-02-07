@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block title %}Page Error{% endblock %}
+{% block my_content %}
+  <h1>Page Error</h1>
+  <p class="login_error">"Incorrect email or password supplied.
+  <p><a href="{{ url_for('login') }}">go back</a>
+{% endblock my_content%}

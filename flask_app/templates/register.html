@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block my_content %}
+
+{% for error in form.first_name_new.errors %} 
+<p>{{ error}}</p>
+{% endfor %} 
+
+<form action= "" method="POST">
+    {{ form.csrf_token }}
+    <p>{{ form.first_name_new.label }} {{ form.first_name_new }}</p>
+    <p>{{ form.email_new.label }} {{ form.email_new}}</p>
+    <p>{{ form.password_new.label }} {{ form.password_new}}</p>
+    <p>{{ form.password_confirm.label }} {{ form.password_confirm}}</p>
+    <p>{{ form.submit.lable}} {{form.submit }}</p>
+</form>
+
+
+{% endblock my_content %}

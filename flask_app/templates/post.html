@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+{% block my_content %}
+<article class="post_title">
+  <img class="article-img" src="{{ url_for('static', filename='img/' + post.image_file) }}">
+  <div class="detailed_description">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ post.user.username }}</a>
+      <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+
+
+    </div>
+    <h2 class="article-title">{{ post.title }}</h2>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+</article>
+
+<select name="rating-name" id="my_rating" onchange="location.href='/rating?post_id='+{{ post.id }}+'&&score='+$('#my_rating').val()">
+  <option value="">--Please choose an option--</option>
+  <option value="1">&#9829</option>
+  <option value="2">&#9829&#9829</option>
+  <option value="3">&#9829&#9829&#9829</option>
+  <option value="4">&#9829&#9829&#9829&#9829</option>
+  <option value="5">&#9829&#9829&#9829&#9829&#9829</option>
+</select>
+<p>Your rating: {{ rate }}</p>
+
+<h1 align="center">Comments</h1>
+<ul class="list_comments list_comments_flush" id="comment_t">
+  {% for comment in comments %}
+  <li class="list-comment-item">{{ comment.user.username }}:&nbsp;{{comment.comment}}
+
+    <!--<button type="button" class="close" onClick="deleteNote({ userid })">
+       <span aria-hidden="true">&times;</span>
+     </button>-->
+  </li>
+  {% endfor%}
+
+</ul>
+<form method="POST">
+  {{ form.csrf_token }}
+  <textarea name="comment" id="comment" class="form-control"
+    onfocus="checkIfLogined({{ current_user.username|length }})">
+
+    </textarea>
+  <div align="center">
+    <br />
+    <button type="submit" class="btn btn-primary">Add Comments</button>
+  </div>
+</form>
+
+<script>
+  function checkIfLogined(lengthOfuser) {
+    if (lengthOfuser == 0) {
+      alert("login First!");
+      let status = document.getElementById("comment");
+      status.blur();
+    }
+
+    function submitRate(post_id,score){
+      c
+      // $.ajax({
+      //   url:'rating',
+      //   data:{'post_id':post_id,'score':score},
+      //   method:'GET',
+      //   success: function(data){
+      //     console.log(post_id,score)
+      //     // location.reload();
+      //   }
+      // })
+    }
+  }
+</script>
+
+{% endblock my_content %}
+
+<!--lock scripts %}
+<!--<script>
+<!--$('.disabled-rating').rating({
+<!--    readonly: true,
+<!--    theme: 'krajee-fa',
+<!--    filledStar: '<i class="fa fa-star"></i>',
+<!--    emptyStar: '<i class="fa fa-star-o"></i>',
+<!--    showCaption: false, //不显示右边内容
+<!--    showClear: false //清除按钮
+<!--})
+<!--const rating = $('.kv-fa');
+<!--const id = $('.comment_id');
+<!--rating.rating({
+<!--    theme: 'krajee-fa',
+<!--    filledStar: '<i class="fa fa-star"></i>',
+<!--    emptyStar: '<i class="fa fa-star-o"></i>',
+<!--    showCaption: false, //不显示右边内容
+<!--    showClear: false //清除按钮
+<!--});
+<!--rating.on(
+<!--    'change', function () {
+<!--        console.log('Rating selected: ' + $(this).val());
+<!--        const ratingIndex = $(this)[0].id.split('_')[1];
+<!--        const url = 'http://' + window.location.host + '/post/comment/rating/' + $('#comment_id_' + ratingIndex).val();
+<!--        let data = {
+<!--            score: $(this).val()
+<!--        }
+<!--        $.post(url, data, function (data) {
+<!--            if (data.message === 'success') {
+<!--                window.location.reload()
+<!--            }
+<!--        });
+<!--    });
+<!--
+<!--</script>
+<!--ndblock %}
+<!--{% if post.author_id == current_user.id %}
+       <  <div>
+       <    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_post', post_id=post_id) }}">Update</a>
+       <    <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+       <  </div>
+       <{% endif %}
