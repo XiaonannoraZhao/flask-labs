@@ -1,4 +1,4 @@
-- Student NO: 1894986
+Hi
 - OpenShift URL: http://c1894986-cmt-120-cw-2-git-1894986-cmt120-cw2.apps.openshift.cs.cf.ac.uk/
 - Checksum:
 Reference:
